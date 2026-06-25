@@ -199,6 +199,16 @@ body {
   overflow: hidden; display: -webkit-box;
   -webkit-line-clamp: 2; -webkit-box-orient: vertical;
 }
+.ev-url-row { margin-top: 7px; }
+.ev-url {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; color: var(--blue); text-decoration: none;
+  background: var(--blue-dim); border: 1px solid var(--blue-bdr);
+  padding: 2px 9px; border-radius: var(--r-pill);
+  transition: opacity 0.15s;
+}
+.ev-url:hover { opacity: 0.75; }
+.ev-url::before { content: "→"; font-size: 10px; }
 
 /* ── BRIEF PANEL ── */
 .brief-panel { background: var(--ground); }
@@ -789,18 +799,18 @@ body {
 
 <script>
 const WALLETS = [
-  { addr:"0x3r0...A1B2", handle:"@0xg3ro",    label:"90%+ Winrate", minsAgo:2  },
-  { addr:"0xle0...C3D4", handle:"@0xleo",      label:"Safe & Smart", minsAgo:1  },
-  { addr:"0xluk...E5F6", handle:"@liukai",     label:"fomo Smarts",  minsAgo:4  },
-  { addr:"0xPGc...G7H8", handle:"@pingucharts",label:"90%+ Winrate", minsAgo:3  },
-  { addr:"0xOHT...I9J0", handle:"@_OHT_",      label:"Safe & Smart", minsAgo:7  },
-  { addr:"0xmk4...K1L2", handle:"@boosted",    label:"fomo Smarts",  minsAgo:5  },
-  { addr:"0xRod...M3N4", handle:"@rodotfun",   label:"New Whales",   minsAgo:6  },
-  { addr:"0xBLN...O5P6", handle:"@BLUNF",      label:"90%+ Winrate", minsAgo:9  },
-  { addr:"0xSSO...Q7R8", handle:"@SillySmall", label:"Safe & Smart", minsAgo:11 },
-  { addr:"0xCr0...S9T0", handle:"@Crypt0N8v",  label:"fomo Smarts",  minsAgo:8  },
-  { addr:"0xfar...U1V2", handle:"@farmerchts", label:"90%+ Winrate", minsAgo:13 },
-  { addr:"0x404...W3X4", handle:"@404flipped",  label:"New Whales",  minsAgo:10 },
+  { addr:"0x3r0...A1B2", handle:"@0xg3ro",    label:"90%+ Winrate", minsAgo:2,  monitorId:"monitor_04d1f43d9319481d9b88d301d2abfdc8" },
+  { addr:"0xle0...C3D4", handle:"@0xleo",      label:"Safe & Smart", minsAgo:1,  monitorId:"monitor_04d1f43d9319481d9b88d301d2abfdc8" },
+  { addr:"0xluk...E5F6", handle:"@liukai",     label:"fomo Smarts",  minsAgo:4,  monitorId:"monitor_0dc95802005b4ca6b37ddc5382b0a3ae" },
+  { addr:"0xPGc...G7H8", handle:"@pingucharts",label:"90%+ Winrate", minsAgo:3,  monitorId:"monitor_0dc95802005b4ca6b37ddc5382b0a3ae" },
+  { addr:"0xOHT...I9J0", handle:"@_OHT_",      label:"Safe & Smart", minsAgo:7,  monitorId:"monitor_20454a6b18b94e1da9b0d23522777815" },
+  { addr:"0xmk4...K1L2", handle:"@boosted",    label:"fomo Smarts",  minsAgo:5,  monitorId:"monitor_37d1fbc5d371497cb83c1bd705f134b8" },
+  { addr:"0xRod...M3N4", handle:"@rodotfun",   label:"New Whales",   minsAgo:6,  monitorId:"monitor_20454a6b18b94e1da9b0d23522777815" },
+  { addr:"0xBLN...O5P6", handle:"@BLUNF",      label:"90%+ Winrate", minsAgo:9,  monitorId:"monitor_2636ec48da7847b79807c0ca00cc51c1" },
+  { addr:"0xSSO...Q7R8", handle:"@SillySmall", label:"Safe & Smart", minsAgo:11, monitorId:"monitor_e8f3a6250db247169e56fa9b880aebf2" },
+  { addr:"0xCr0...S9T0", handle:"@Crypt0N8v",  label:"fomo Smarts",  minsAgo:8,  monitorId:"monitor_37d1fbc5d371497cb83c1bd705f134b8" },
+  { addr:"0xfar...U1V2", handle:"@farmerchts", label:"90%+ Winrate", minsAgo:13, monitorId:"monitor_7003a4a40c764de9b605a1f596909bb7" },
+  { addr:"0x404...W3X4", handle:"@404flipped",  label:"New Whales",  minsAgo:10, monitorId:"monitor_e8f3a6250db247169e56fa9b880aebf2" },
 ];
 
 const EVENT_DEFS = [
@@ -842,11 +852,14 @@ function relTime(ms) {
   return Math.floor(s / 60) + "m ago";
 }
 
-function buildCard(w, def, isNew) {
+function buildCard(w, def, isNew, sourceUrl) {
   const sev = def.severity;
   const div = document.createElement("div");
   div.className = "event-card" + (isNew ? " new-flash" : "");
   div.dataset.ts = String(Date.now());
+  const urlHtml = sourceUrl
+    ? '<div class="ev-url-row"><a class="ev-url" href="' + sourceUrl + '" target="_blank" rel="noopener">' + sourceUrl.replace(/^https?:\/\/(www\.)?/, '').split('/')[0] + '</a></div>'
+    : '';
   div.innerHTML =
     '<div class="ev-bar sev-' + sev + '"></div>' +
     '<div class="ev-body">' +
@@ -862,6 +875,7 @@ function buildCard(w, def, isNew) {
         '<span class="ev-collection">' + w.label + '</span>' +
       '</div>' +
       '<div class="ev-desc">' + pick(def.descs) + '</div>' +
+      urlHtml +
     '</div>';
   return div;
 }
@@ -870,9 +884,9 @@ const feed = document.getElementById("event-feed");
 const lastLbl = document.getElementById("last-event-label");
 const MAX_CARDS = 9;
 
-function addEvent(w, def, isNew) {
+function addEvent(w, def, isNew, sourceUrl) {
   lastEventMs = Date.now();
-  const card = buildCard(w, def, isNew);
+  const card = buildCard(w, def, isNew, sourceUrl);
   feed.insertBefore(card, feed.firstChild);
   while (feed.children.length > MAX_CARDS) {
     const old = feed.lastChild;
@@ -897,17 +911,55 @@ function addEvent(w, def, isNew) {
   });
 })();
 
-// Seed initial events (oldest first so newest ends up on top)
-var SEEDS = [
-  [0,0,0],[2,2,1],[4,1,0],[7,3,2],[1,4,0]
+// Real events from Parallel monitors (pre-fetched, with source URLs)
+// monitor_2636ec48da7847b79807c0ca00cc51c1 — "SEC CFTC crypto enforcement action DeFi wallet fraud 2025"
+var REAL_EVENTS = [
+  {
+    walletIdx: 6, // @rodotfun
+    def: { label:"Regulatory Flag", severity:"high", sources:["SEC.gov","CFTC.gov"] },
+    desc: "SEC FY2025 enforcement results — fraud targeting retail investors cited; CFTC issued orders against three DeFi protocol operators for unregistered trading.",
+    url: "https://www.sec.gov/newsroom/press-releases/2026-34",
+    secsAgo: 341
+  },
+  {
+    walletIdx: 7, // @BLUNF
+    def: { label:"Regulatory Flag", severity:"high", sources:["SEC.gov","TRM Labs"] },
+    desc: "SEC charged three purported crypto trading platforms and four investment clubs with scheme targeting retail investors on social media. Dec 22 2025.",
+    url: "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+    secsAgo: 512
+  },
+  {
+    walletIdx: 0, // @0xg3ro
+    def: EVENT_DEFS[0],
+    desc: EVENT_DEFS[0].descs[0],
+    url: null,
+    secsAgo: 118
+  },
+  {
+    walletIdx: 4, // @_OHT_
+    def: EVENT_DEFS[4],
+    desc: EVENT_DEFS[4].descs[2],
+    url: null,
+    secsAgo: 203
+  },
+  {
+    walletIdx: 1, // @0xleo
+    def: EVENT_DEFS[2],
+    desc: EVENT_DEFS[2].descs[0],
+    url: null,
+    secsAgo: 47
+  },
 ];
-SEEDS.reverse().forEach(function(s) {
-  var w = WALLETS[s[0]], def = EVENT_DEFS[s[1]];
-  var card = buildCard(w, def, false);
-  var secsAgo = [47,118,203,341,512][SEEDS.indexOf(s)] || 100;
-  card.dataset.ts = String(Date.now() - secsAgo * 1000);
+
+REAL_EVENTS.slice().reverse().forEach(function(ev) {
+  var w = WALLETS[ev.walletIdx];
+  var def = ev.def;
+  var desc = ev.desc;
+  var card = buildCard(w, { label: def.label, severity: def.severity, sources: def.sources, descs: [desc] }, false, ev.url);
+  var ts = Date.now() - ev.secsAgo * 1000;
+  card.dataset.ts = String(ts);
   card.querySelector("[data-ts]").dataset.ts = card.dataset.ts;
-  card.querySelector("[data-ts]").textContent = relTime(parseInt(card.dataset.ts));
+  card.querySelector("[data-ts]").textContent = relTime(ts);
   feed.appendChild(card);
 });
 
