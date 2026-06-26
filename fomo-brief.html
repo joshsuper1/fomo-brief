@@ -862,13 +862,16 @@ const SOURCE_URL_MAP = {
   "Twitter/X":    "https://twitter.com/search?q=hyperliquid+whale+manipulation",
   "CoinDesk":     "https://www.coindesk.com/markets/2026/02/01/single-trader-just-lost-usd220-million-as-ether-plunged-10",
   "ZachXBT":      "https://theindustryspread.com/mysterious-hyperliquid-whale-exposed-convicted-fraudster-behind-high-stakes-crypto-trades/",
-  "PeckShield":   "https://finance.yahoo.com/markets/crypto/articles/fartcoin-whale-liquidated-3-million-104353781.html",
+  "PeckShield":   "https://www.cryptopolitan.com/exploit-hits-gnosis-pay-tesseradao-june/",
   "The Block":    "https://www.theblock.co/post/405850/new-york-man-sentenced-1-4-million-crypto-fraud-scheme-bogus-influencer-accounts",
   "Chainalysis":  "https://www.chainalysis.com/blog/crypto-scams-2026/",
   "TRM Labs":     "https://www.trmlabs.com/reports-and-whitepapers/2026-crypto-crime-report",
   "Solidus Labs":  "https://www.soliduslabs.com/reports/solana-rug-pulls-pump-dumps-crypto-compliance",
-  "WisdomTree":   "https://www.wisdomtreeprime.com/blog/the-great-whale-slap-how-a-whale-offloaded-4m-in-losses-to-hyperliquids-hlp-vault",
-  "crypto.news":  "https://crypto.news/15b-wipeout-insiders-snipers-dump-solana-meme-coins",
+  "FinanceFeeds": "https://financefeeds.com/fake-crypto-influencer-gets-15-months-for-1-4-million-staking-fraud/",
+  "Elliptic":     "https://www.elliptic.co/blog/behind-the-fbi-case-against-huione",
+  "The Defiant":  "https://thedefiant.io/news/hacks/q2-2026-most-hacked-quarter-defi-70-exploits-746m",
+  "Lookonchain":  "https://www.kucoin.com/news/flash/whale-0x97f8-takes-1-1m-profit-on-148m-sp500-short-on-hyperliquid",
+  "Cryptopolitan":"https://www.cryptopolitan.com/exploit-hits-gnosis-pay-tesseradao-june/",
   "Yahoo Finance": "https://finance.yahoo.com/markets/crypto/articles/fartcoin-whale-liquidated-3-million-104353781.html",
   "Reddit":       "https://www.reddit.com/r/CryptoCurrency/search/?q=hyperliquid+whale+fraud",
   "Discord":      "https://www.coindesk.com/search?s=hyperliquid+manipulation",
@@ -954,74 +957,74 @@ function addEvent(w, def, isNew, sourceUrl, excerpt) {
 var REAL_EVENTS = [
   {
     walletIdx: 1,  // @0xleo
-    def: { label:"Influencer Fraud", severity:"high", sources:["The Block"] },
+    def: { label:"Influencer Fraud", severity:"high", sources:["FinanceFeeds"] },
     desc: "NY man sentenced 15 months for $1.4M crypto fraud — faked Telegram handles of popular influencers to collect staking funds.",
-    excerpt: "Jun 23, 2026 — Noman Saleem, 39, created fake Telegram handles to imitate popular crypto influencers. Thousands joined; victims sent crypto expecting staking rewards he never delivered.",
-    url: "https://www.theblock.co/post/405850/new-york-man-sentenced-1-4-million-crypto-fraud-scheme-bogus-influencer-accounts",
+    excerpt: "Jun 24, 2026 — Noman Saleem, 39, sentenced to 15 months for creating fake Telegram handles impersonating top crypto influencers. Thousands joined; victims sent crypto expecting staking rewards he never delivered.",
+    url: "https://financefeeds.com/fake-crypto-influencer-gets-15-months-for-1-4-million-staking-fraud/",
     secsAgo: 420
   },
   {
     walletIdx: 6,  // @rodotfun
-    def: { label:"Market Manipulation", severity:"high", sources:["Yahoo Finance","PeckShield"] },
-    desc: "Coordinated Fartcoin manipulation on Hyperliquid: 4 wallets traced to single entity force-liquidated $3M, offloading losses to HLP vault.",
-    excerpt: "Apr 9, 2026 — PeckShield and Lookonchain linked four wallets to a single entity. Attacker accumulated $15M FARTCOIN long, triggered 'suicide' liquidation, forcing Hyperliquid's HLP vault to absorb toxic positions.",
-    url: "https://finance.yahoo.com/markets/crypto/articles/fartcoin-whale-liquidated-3-million-104353781.html",
+    def: { label:"Criminal Marketplace", severity:"high", sources:["Elliptic"] },
+    desc: "FBI seized Huione Group's cloud infrastructure — the $134B Telegram marketplace used to launder pig-butchering and copy-trade fraud proceeds across Southeast Asia.",
+    excerpt: "Jun 24, 2026 — DOJ announced seizure of Huione Group's cloud computing account. Elliptic traced $134B+ in cryptoasset transactions through the Cambodian Telegram marketplace used to facilitate copy-trade scams.",
+    url: "https://www.elliptic.co/blog/behind-the-fbi-case-against-huione",
     secsAgo: 900
   },
   {
     walletIdx: 7,  // @BLUNF
-    def: { label:"Trader Exposure", severity:"high", sources:["CryptoTimes","ZachXBT"] },
-    desc: "ZachXBT identifies Hyperliquid's top whale — turns out to be William Parker, convicted British hacker and fraudster, who amassed $20M on Hyperliquid.",
-    excerpt: "Mar 21, 2025 — ZachXBT's investigation revealed the identity of the mysterious Hyperliquid Whale as William Parker, a convicted British hacker who had previously been implicated in multiple fraud schemes.",
-    url: "https://theindustryspread.com/mysterious-hyperliquid-whale-exposed-convicted-fraudster-behind-high-stakes-crypto-trades/",
+    def: { label:"Treasury Sanctions", severity:"high", sources:["Chainalysis"] },
+    desc: "US Treasury sanctioned 9 individuals and 26 entities in Prince Group scam network — responsible for $10B in crypto investment fraud against Americans in 2024.",
+    excerpt: "Jun 24, 2026 — US Treasury sanctioned nine individuals and 26 entities linked to the Prince Group criminal org. The network cost Americans at least $10B in 2024 using fake crypto platforms to collect deposits.",
+    url: "https://coinmarketcal.com/en/news/us-treasury-s-10b-scam-warning-shows-why-crypto-is-racing-to-police-itself",
     secsAgo: 1560
   },
   {
     walletIdx: 3,  // @pingucharts
-    def: { label:"Copy Trade Trap", severity:"high", sources:["WisdomTree","CoinDesk"] },
-    desc: "The Great Whale Slap: whale opened $200M ETH long to attract copy traders, then withdrew collateral to force liquidation — pocketed $1.8M while HLP lost $4M.",
-    excerpt: "Mar 12, 2025 — The whale deposited $15.2M USDC, opened a massive ETH long attracting copy traders who assumed insider knowledge, then withdrew collateral mid-trade. Copy traders were liquidated; whale walked away profitable.",
-    url: "https://www.wisdomtreeprime.com/blog/the-great-whale-slap-how-a-whale-offloaded-4m-in-losses-to-hyperliquids-hlp-vault",
+    def: { label:"DeFi Hack Record", severity:"high", sources:["The Defiant"] },
+    desc: "Q2 2026: all-time DeFi hack record — 70 exploits, $746M stolen. April alone saw $625M across 30 incidents, led by $285M Drift Protocol and $293M KelpDAO breach.",
+    excerpt: "Jun 25, 2026 — Q2 2026 logged ~70 DeFi exploits, doubling the previous quarterly record. $746M stolen total; April set single-month record with $625M across 30 incidents driven by Drift ($285M) and KelpDAO ($293M).",
+    url: "https://thedefiant.io/news/hacks/q2-2026-most-hacked-quarter-defi-70-exploits-746m",
     secsAgo: 2100
   },
   {
     walletIdx: 0,  // @0xg3ro
-    def: { label:"Mass Liquidation", severity:"high", sources:["CoinDesk"] },
-    desc: "Single Hyperliquid trader lost $220M on ETH long as market plunged 10% — 434,945 traders liquidated across venues, $2.6B total wiped in 24h.",
-    excerpt: "Feb 1, 2026 — The largest single liquidation occurred on Hyperliquid: $222.65M ETH-USD position wiped out. Hyperliquid alone recorded $1.09B in liquidations, nearly 40% of global totals.",
-    url: "https://www.coindesk.com/markets/2026/02/01/single-trader-just-lost-usd220-million-as-ether-plunged-10",
+    def: { label:"Whale Position Alert", severity:"high", sources:["Lookonchain"] },
+    desc: "Hyperliquid whale 0x97f8 holds $148M SP500 short at 50x leverage — $1.1M profit booked, liquidation price $8,067 flagged by Lookonchain as extreme risk.",
+    excerpt: "Jun 25, 2026 — Lookonchain flagged wallet 0x97f8 on Hyperliquid: $148M SP500 short at 50x leverage with $1.1M unrealized profit. Liquidation price $8,067.34 — a 2% index move wipes the entire position.",
+    url: "https://www.kucoin.com/news/flash/whale-0x97f8-takes-1-1m-profit-on-148m-sp500-short-on-hyperliquid",
     secsAgo: 2760
   },
   {
     walletIdx: 5,  // @boosted
-    def: { label:"Analytics Report", severity:"med", sources:["Chainalysis"] },
-    desc: "Chainalysis 2026 report: $17B stolen in crypto scams and fraud in 2025 — impersonation scams up 1400% YoY; AI-enabled scams 4.5x more profitable.",
-    excerpt: "Jan 13, 2026 — $17 billion estimated stolen in crypto scams in 2025. Impersonation scams show 1400% year-over-year growth. AI-enabled scams were 4.5 times more profitable than traditional scams.",
-    url: "https://www.chainalysis.com/blog/crypto-scams-2026/",
+    def: { label:"Bridge Exploit", severity:"high", sources:["PeckShield"] },
+    desc: "$127M drained across Ethereum, Arbitrum, and Polygon in a 12-minute bridge exploit — five platforms halted trading; SEC/CFTC launched emergency scrutiny.",
+    excerpt: "Jun 25, 2026 — Cross-chain bridge exploit drained $127M in 12 minutes via forged validator messages across Ethereum, Arbitrum, and Polygon. Five market-making platforms halted; SEC and CFTC opened emergency investigations.",
+    url: "https://www.nadcab.com/blog/defi-bridge-exploit-june-cross-chain",
     secsAgo: 3420
   },
   {
     walletIdx: 2,  // @liukai
-    def: { label:"Rug Pull Report", severity:"med", sources:["Solidus Labs"] },
-    desc: "Solidus Labs research: 98.7% of Pump.fun tokens and 93% of Raydium liquidity pools exhibit pump-and-dump or rug pull characteristics.",
-    excerpt: "2025 — Approximately 98.7% of tokens on Pump.fun and 93% of liquidity pools on Raydium have exhibited characteristics of pump-and-dump schemes or rug pulls, posing serious regulatory and reputational threats.",
-    url: "https://www.soliduslabs.com/reports/solana-rug-pulls-pump-dumps-crypto-compliance",
+    def: { label:"Protocol Exploit", severity:"med", sources:["Elliptic"] },
+    desc: "Hackers drained $2.1M from abandoned Aztec Connect DeFi protocol — incomplete ZK-proof verification in deprecated contract with no admin keys to pause.",
+    excerpt: "Jun 24, 2026 — Attacker exploited abandoned Aztec Connect via incomplete proof verification. The computeRootHashes() function only checked the start of proof data — token transfer params buried in the middle were manipulated.",
+    url: "https://bitcoinfoundation.org/news/crimes-and-fraud-news/aztec-protocol-hack",
     secsAgo: 4080
   },
   {
     walletIdx: 10, // @farmerchts
-    def: { label:"Coordinated Dump", severity:"med", sources:["crypto.news"] },
-    desc: "Solana meme coin market lost $15B as insiders and snipers dumped — TRUMP crashed from $103 to $16, MELANIA down 92%.",
-    excerpt: "Feb 22, 2025 — Most Solana meme coins crashed by double digits, total market cap falling from $25B to $10B. Official Trump down from $103 to $16. Insiders and snipers identified as primary sellers.",
-    url: "https://crypto.news/15b-wipeout-insiders-snipers-dump-solana-meme-coins",
+    def: { label:"Scam Domain Seized", severity:"med", sources:["Chainalysis"] },
+    desc: "DOJ seized Tickmilleas.com — crypto fraud domain impersonating a financial firm, funneling US victims to Chinese organized crime wallets in Myanmar-Thailand scam compounds.",
+    excerpt: "Jun 25, 2026 — DOJ forfeiture of Tickmilleas.com: scam domain registered Nov 2025 impersonated a legitimate firm, deceiving US victims into sending BTC/ETH/USDT. Blockchain analysis linked funds to Chinese organized crime in Myanmar.",
+    url: "https://www.chainalysis.com/blog/crypto-scams-2026/",
     secsAgo: 4740
   },
   {
     walletIdx: 4,  // @_OHT_
-    def: { label:"Wash Trading Alert", severity:"med", sources:["TRM Labs"] },
-    desc: "TRM Labs 2026 report: ~34% of A7A5 stablecoin volume artificially inflated via wash trading — rapid circular transfers consistent with automated manipulation.",
-    excerpt: "Jan 28, 2026 — Approximately 34% of A7A5's trading volume was likely artificially inflated through wash trading, including rapid circular transfers consistent with automated behavior designed to inflate apparent liquidity.",
-    url: "https://www.trmlabs.com/reports-and-whitepapers/2026-crypto-crime-report",
+    def: { label:"Mint & Dump Alert", severity:"med", sources:["Cryptopolitan","PeckShield"] },
+    desc: "TesseraDAO exploiter minted 99M TSR tokens on BNB Chain, swapped for $2.5M USDT, bridged to Ethereum, then laundered 1,285 ETH via Tornado Cash.",
+    excerpt: "Jun 25, 2026 — PeckShield tracked TesseraDAO exploit: 99M TSR minted on BNB Chain, swapped for $2.5M USDT, bridged cross-chain, then 1,285.5 ETH funneled through Tornado Cash. Classic 2026 mint-dump-launder pattern.",
+    url: "https://www.cryptopolitan.com/exploit-hits-gnosis-pay-tesseradao-june/",
     secsAgo: 5400
   },
 ];
@@ -1039,25 +1042,21 @@ REAL_EVENTS.slice().reverse().forEach(function(ev) {
 
 // All timer IDs so we can kill everything cleanly
 var streamCount = 0;
-var MAX_STREAM = 30;
 var tickId, chipId;
 
-function stopAll() {
-  clearInterval(tickId);
-  clearInterval(chipId);
-}
-
 function scheduleNext() {
-  if (streamCount >= MAX_STREAM) { stopAll(); return; }
   setTimeout(function() {
     if (!document.hidden) {
       addEvent(pick(WALLETS), pick(EVENT_DEFS), true);
       streamCount++;
     }
     scheduleNext();
-  }, 4000 + Math.random() * 9000);
+  }, 2000 + Math.random() * 5000);
 }
 scheduleNext();
+
+// Auto-reload hourly to pick up fresh monitor events
+setTimeout(function() { location.reload(); }, 60 * 60 * 1000);
 
 tickId = setInterval(function() {
   if (document.hidden) return;
