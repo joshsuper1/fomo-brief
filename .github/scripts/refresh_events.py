@@ -153,9 +153,28 @@ def main():
         print("No recent high-confidence events found — keeping existing REAL_EVENTS.", file=sys.stderr)
         sys.exit(0)
 
+    # Deduplicate by URL — keep highest-scoring entry per URL
+    by_url = {}
+    for c in scored:
+        _, url = extract_best_citation(c["raw"].get("output", {}))
+        if not url:
+            continue
+        if url not in by_url or c["score"] > by_url[url]["score"]:
+            by_url[url] = c
+    deduped = list(by_url.values())
+
+    # Require minimum content quality: must have a specific URL and some content
+    quality = [c for c in deduped
+               if extract_best_citation(c["raw"].get("output", {}))[1]
+               and len(c["raw"].get("output", {}).get("content", "")) > 80]
+
+    if not quality:
+        print("No quality events after dedup/filter — keeping existing REAL_EVENTS.", file=sys.stderr)
+        sys.exit(0)
+
     # Sort best first, take up to 8
-    scored.sort(key=lambda x: x["score"], reverse=True)
-    best = scored[:8]
+    quality.sort(key=lambda x: x["score"], reverse=True)
+    best = quality[:8]
 
     # Assign secsAgo: spread events ~10 min apart starting at 6 min ago
     for i, c in enumerate(best):
