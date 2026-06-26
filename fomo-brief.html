@@ -860,7 +860,7 @@ function relTime(ms) {
 
 const SOURCE_URL_MAP = {
   "Twitter/X":     "https://twitter.com/search?q=hyperliquid+whale+manipulation",
-  "CoinDesk":      "https://www.coindesk.com/search?s=crypto+fraud+manipulation",
+  "CoinDesk":      "https://www.coindesk.com/business/2025/05/07/98-of-tokens-on-pump-fun-have-been-rug-pulls-or-an-act-of-fraud-new-report-says",
   "ZachXBT":       "https://theindustryspread.com/mysterious-hyperliquid-whale-exposed-convicted-fraudster-behind-high-stakes-crypto-trades/",
   "PeckShield":    "https://www.theblock.co/post/406073/coinex-iran-trm-labs",
   "The Block":     "https://www.theblock.co/post/406073/coinex-iran-trm-labs",
@@ -873,8 +873,8 @@ const SOURCE_URL_MAP = {
   "Ledger":        "https://www.ledger.com/academy/topics/security/crypto-security-2026-how-to-avoid-scams-and-hacks-in-2026",
   "Yahoo Finance":  "https://finance.yahoo.com/markets/crypto/articles/fartcoin-whale-liquidated-3-million-104353781.html",
   "Reddit":        "https://www.reddit.com/r/CryptoCurrency/search/?q=hyperliquid+whale+fraud",
-  "Discord":       "https://www.coindesk.com/search?s=hyperliquid+manipulation",
-  "Telegram":      "https://www.coindesk.com/search?s=copy+trade+fraud",
+  "Discord":       "https://www.theblock.co/post/406082/south-korea-bithumb-information-penalty",
+  "Telegram":      "https://www.elliptic.co/blog/behind-the-fbi-case-against-huione",
   "Reuters":       "https://www.reuters.com/technology/cryptocurrency/",
   "CFTC.gov":      "https://www.cftc.gov/LawRegulation/CourtActions/index.htm",
 };
@@ -884,7 +884,7 @@ function resolveUrl(def, overrideUrl) {
   for (var i = 0; i < def.sources.length; i++) {
     if (SOURCE_URL_MAP[def.sources[i]]) return SOURCE_URL_MAP[def.sources[i]];
   }
-  return "https://www.coindesk.com/search?s=crypto+fraud+manipulation";
+  return "https://www.theblock.co/post/406073/coinex-iran-trm-labs";
 }
 
 function buildCard(w, def, isNew, sourceUrl, excerpt) {
