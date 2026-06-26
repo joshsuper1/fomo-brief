@@ -57,9 +57,11 @@ def score_event(raw_event: dict, monitor_meta: dict, now: datetime) -> float:
     if age_hours > CUTOFF_HOURS:
         return -1  # discard
 
-    # Confidence
+    # Confidence — drop low/unknown entirely
     basis = output.get("basis", [{}])
     confidence_str = basis[0].get("confidence") if basis else None
+    if confidence_str not in ("high", "medium"):
+        return -1
     confidence_score = CONFIDENCE_RANK.get(confidence_str, 0)
 
     # Prefer high-severity monitors
