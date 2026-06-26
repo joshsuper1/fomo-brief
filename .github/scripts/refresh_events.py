@@ -86,7 +86,12 @@ def extract_best_citation(output: dict) -> tuple[str, str]:
 def is_homepage(url: str) -> bool:
     from urllib.parse import urlparse
     p = urlparse(url)
-    return p.path.strip("/") == ""
+    if p.path.strip("/") == "":
+        return True
+    # Block Reuters section/category pages (not specific articles)
+    if "reuters.com" in p.netloc and len(p.path.strip("/").split("/")) <= 2:
+        return True
+    return False
 
 
 def build_excerpt(output: dict, event_date: str, citation_title: str) -> str:
