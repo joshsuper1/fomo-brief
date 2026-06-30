@@ -31,7 +31,7 @@ MONITORS = [
 
 CONFIDENCE_RANK = {"high": 3, "medium": 2, "low": 1, None: 0}
 CUTOFF_HOURS = 48   # monitor event age cutoff
-ARTICLE_MAX_DAYS = 7  # reject articles older than this regardless of when monitor ran
+ARTICLE_MAX_DAYS = 2  # reject articles older than this regardless of when monitor ran
 
 
 def extract_article_date(output: dict, url: str) -> datetime | None:
