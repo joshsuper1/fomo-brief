@@ -955,7 +955,7 @@ function addEvent(w, def, isNew, sourceUrl, excerpt) {
 })();
 
 // Real events — auto-refreshed from Parallel monitors (last 48h, highest confidence first)
-var REFRESHED_AT = 1782951643456;
+var REFRESHED_AT = 1782990848490;
 var REAL_EVENTS = [
   {
     walletIdx: 4,
@@ -974,12 +974,20 @@ var REAL_EVENTS = [
     secsAgo: 960,
   },
   {
+    walletIdx: 2,
+    def: { label: "Whale Liquidation", severity: "high", sources: ["Twitter/X"] },
+    desc: "On July 2, 2026, a whale identified as 0x9dc was liquidated on Hyperliquid's SKHX (SK Hynix) long positions following a decline in",
+    excerpt: "On July 2, 2026, a whale identified as 0x9dc was liquidated on Hyperliquid's SKHX (SK Hynix) long positions following a decline in",
+    url: "https://www.kucoin.com/news/flash/sk-hynix-longs-on-hyperliquid-face-massive-losses-as-price-dips",
+    secsAgo: 1560,
+  },
+  {
     walletIdx: 0,
     def: { label: "DOJ Fraud", severity: "high", sources: ["The Block"] },
     desc: "On July 1, 2026, the Department of Justice announced the arrest and extradition of Peter Stokes, a member of the 'Scattered Spider' hacking group, who is charged with conspiracy",
     excerpt: "On July 1, 2026, the Department of Justice announced the arrest and extradition of Peter Stokes, a member of the 'Scattered Spider' hacking group, who is charged with conspiracy and fraud. The group is alleged to have...",
     url: "https://www.justice.gov/opa/pr/alleged-member-criminal-cyber-hacking-group-scattered-spider-arrested-finland-and-extradited",
-    secsAgo: 1560,
+    secsAgo: 2160,
   },
   {
     walletIdx: 0,
@@ -987,7 +995,7 @@ var REAL_EVENTS = [
     desc: "On July 1, 2026, the U.S. Treasury and Department of Justice announced sanctions and actions against the Brazilian criminal network PCC for utilizing cryptocurrency to move",
     excerpt: "On July 1, 2026, the U.S. Treasury and Department of Justice announced sanctions and actions against the Brazilian criminal network PCC for utilizing cryptocurrency to move illicit funds back to",
     url: "https://home.treasury.gov/news/press-releases/sb0549",
-    secsAgo: 2160,
+    secsAgo: 2760,
   },
   {
     walletIdx: 0,
@@ -995,7 +1003,7 @@ var REAL_EVENTS = [
     desc: "A Chinese national pleaded guilty on July 1, 2026, to charges of cocaine trafficking and providing material support to the CJNG cartel, a case that involved the use of",
     excerpt: "A Chinese national pleaded guilty on July 1, 2026, to charges of cocaine trafficking and providing material support to the CJNG cartel, a case that involved the use of cryptocurrency for money movement and",
     url: "https://www.justice.gov/usao-ma/pr/eighteen-individuals-and-entities-charged-international-operation-targeting-widespread",
-    secsAgo: 2760,
+    secsAgo: 3360,
   },
   {
     walletIdx: 2,
@@ -1003,7 +1011,7 @@ var REAL_EVENTS = [
     desc: "An institutional whale using three wallets (0xf8a, 0xd5c, 0xf2d) opened a combined long position in Micron Technology (MU) perpetuals on Hyperliquid worth approximately $10.3",
     excerpt: "An institutional whale using three wallets (0xf8a, 0xd5c, 0xf2d) opened a combined long position in Micron Technology (MU) perpetuals on Hyperliquid worth approximately $10.3 million. The position was reported on July...",
     url: "https://www.binance.com/en/square/post/340019850789569",
-    secsAgo: 3360,
+    secsAgo: 3960,
   },
   {
     walletIdx: 7,
@@ -1011,14 +1019,6 @@ var REAL_EVENTS = [
     desc: "Usie Otukpa Osang was arraigned by the EFCC on July 1, 2026, in connection with an alleged cryptocurrency investment scam involving approximately AUD 8.4 million and US 3.6",
     excerpt: "Usie Otukpa Osang was arraigned by the EFCC on July 1, 2026, in connection with an alleged cryptocurrency investment scam involving approximately AUD 8.4 million and US 3.6",
     url: "https://businessday.ng/news/article/efcc-drags-suspected-crypto-fraudster-to-court-over-alleged-aud8-4m-us3-6m-scam/",
-    secsAgo: 3960,
-  },
-  {
-    walletIdx: 7,
-    def: { label: "Trader Arrest", severity: "high", sources: ["The Block"] },
-    desc: "Christopher Alexander Delgado, the 34-year-old CEO of Goliath Ventures, pleaded guilty on July 1, 2026, to conspiracy to commit wire fraud, wire fraud, and money laundering in",
-    excerpt: "Christopher Alexander Delgado, the 34-year-old CEO of Goliath Ventures, pleaded guilty on July 1, 2026, to conspiracy to commit wire fraud, wire fraud, and money laundering in relation to a $250 million cryptocurrency...",
-    url: "https://www.kucoin.com/news/flash/goliath-ventures-ceo-pleads-guilty-to-250m-crypto-ponzi-scheme",
     secsAgo: 4560,
   },
 ];
